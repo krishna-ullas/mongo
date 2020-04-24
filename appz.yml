@@ -4,11 +4,11 @@ app:
   notify: appz@cloudbourne.co
 
 build:
-  version: 2.9
+  version: 3.4
   env: DEV
   build_file: none
   output_files: output/*.zip
-  image_template: mongo-3.2
+  image_template: mongo-3.4
   image_name: alpha/log-collector-db
 
 deploy:
