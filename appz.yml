@@ -1,29 +1,38 @@
 app:
-  name: LogCollectorDB
-  code: LCDB
-  notify: appz@cloudbourne.co
-
+  name: AppzMongoDB
+  code: AMDB
+  notify: kullas@ecloudcontrol.com
 build:
-  version: 3.1
+  version: 6.0
   env: DEV
   build_file: none
   output_files: output/*.zip
-  image_template: mongo-3.4
-  image_name: alpha/log-collector-db
-
+  image_template: mongo-6.0
+  
 deploy:
-  context: alpha/DEV
+  context: krishna/DEV
+  type: statefulset
   replicas: 1
   port:
   - 27017
-
 volumes:
 - claim: mongo-data
   mount: /appz/data
   name: mongo-data
-
-monitor:
-  notify: appzops@cloudbourne.co      
-
+  size: 5Gi
+  mode: ReadWriteOnce
+  
 properties:
-  revision : 24
+  revision : 65
+  AUTH_ENABLE : 0
+  DB_USER_ADMIN : appz
+  DB_USER_ADMIN_PASSWORD : 
+    vault : DB_USER_ADMIN_PASSWORD
+  MONGODB_HOST : 127.0.0.1
+  MONGODB_PORT : 27017
+  MASTER_ENABLE : yes
+  REPLICATION: 0
+  #AUTH_KEY :
+    #vault : AUTH_KEY
+  #APPZ_APP_NAME : mongodb-6-0
+  DISABLE_FLUENTD : 0
