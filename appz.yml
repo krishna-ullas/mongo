@@ -1,7 +1,8 @@
 app:
-  name: AppzMongoDB
-  code: AMDB
+  name: mongodb
+  code: MONGODB
   notify: kullas@ecloudcontrol.com
+
 build:
   version: 6.0
   env: DEV
@@ -12,27 +13,50 @@ build:
 deploy:
   context: krishna-ullas/DEV
   type: statefulset
-  replicas: 1
+  replicas: 2
   port:
   - 27017
+  - 9216
+
 volumes:
 - claim: mongo-data
   mount: /appz/data
   name: mongo-data
   size: 5Gi
   mode: ReadWriteOnce
+  matchLabels: false
+  
+- claim: mongo-keys
+  mount: /appz/keys
+  name: mongo-keys
+  size: 1Gi
+  mode: ReadWriteOnce
+  matchLabels: false
+  
+- claim: mongo-backup
+  mount: /appz/backup
+  name: mongo-backup
+  size: 5Gi
+  mode: ReadWriteOnce
+  matchLabels: false
   
 properties:
-  revision : 67
-  AUTH_ENABLE : 0
-  DB_USER_ADMIN : appz
-  DB_USER_ADMIN_PASSWORD : 
-    vault : DB_USER_ADMIN_PASSWORD
-  MONGODB_HOST : 127.0.0.1
-  MONGODB_PORT : 27017
-  MASTER_ENABLE : yes
-  REPLICATION: 0
-  #AUTH_KEY :
-    #vault : AUTH_KEY
-  #APPZ_APP_NAME : mongodb-6-0
-  DISABLE_FLUENTD : 0
+  DB_USER_ADMIN: admin
+  DB_USER_ADMIN_PASSWORD: 
+    vault: DB_USER_ADMIN_PASSWORD
+  MONGO_USER_PASSWORD: 
+    vault: MONGO_USER_PASSWORD
+  AUTH_KEY: 
+    vault: AUTH_KEY
+  ENCRYPTION_KEY:
+    vault: ENCRYPTION_KEY
+  BACKUPFILE: ksfetest,test
+  REPLICATION: 2
+  MASTER_ENABLE: "no"
+  AUTH_ENABLE: 1
+  
+  MONGODB_HOST: 127.0.0.1
+  MONGODB_PORT: 27017
+  MONGO_BACKUP_TIME: 2
+  MONGO_BACKUP_DAYS: 7
+  revision : 23
