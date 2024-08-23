@@ -1,11 +1,11 @@
 users:
-  - name: appz
-    password: $DB_USER_ADMIN_PASSWORD
+  - name: testuser
+    password: $MONGO_USER_PASSWORD
 
 databases:
-  - name: test
+  - name: testdb
 
 acl:
-  - database: test
-    user: appz
+  - database: testdb
+    user: testuser
     access: dbOwner
