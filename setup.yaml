@@ -1,0 +1,11 @@
+users:
+  - name: appz
+    password: $DB_USER_ADMIN_PASSWORD
+
+databases:
+  - name: test
+
+acl:
+  - database: test
+    user: appz
+    access: dbOwner
