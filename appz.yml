@@ -8,7 +8,7 @@ build:
   env: DEV
   build_file: none
   output_files: output/*.zip
-  image_template: mongo-6.0.3
+  image_template: mongo-6.0
   
 deploy:
   context: krishna-ullas/DEV
@@ -59,4 +59,4 @@ properties:
   MONGODB_PORT: 27017
   MONGO_BACKUP_TIME: 2
   MONGO_BACKUP_DAYS: 7
-  revision : 25
+  revision : 26
