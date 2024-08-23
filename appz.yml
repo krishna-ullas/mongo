@@ -51,7 +51,7 @@ properties:
   ENCRYPTION_KEY:
     vault: ENCRYPTION_KEY
   BACKUPFILE: ksfetest,test
-  REPLICATION: 2
+  REPLICATION: 1
   MASTER_ENABLE: "no"
   AUTH_ENABLE: 1
   
