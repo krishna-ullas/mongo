@@ -52,7 +52,12 @@ properties:
     vault: ENCRYPTION_KEY
   BACKUPFILE: ksfetest,test
   REPLICATION: 2
-  MASTER_ENABLE: "yes"
+  MASTER_ENABLE: |
+    {{- if eq (index .StatefulSet.Name | last 1) "0" -}}
+    "yes"
+    {{- else -}}
+    "no"
+    {{- end -}}
   AUTH_ENABLE: 1
   
   MONGODB_HOST: 127.0.0.1
