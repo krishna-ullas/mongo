@@ -42,6 +42,8 @@ volumes:
   
 properties:
   DB_USER_ADMIN: admin
+  AUTH_DB: testdb
+  AUTH_USER: testuser
   DB_USER_ADMIN_PASSWORD: 
     vault: DB_USER_ADMIN_PASSWORD
   MONGO_USER_PASSWORD: 
