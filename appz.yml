@@ -54,7 +54,7 @@ properties:
     vault: ENCRYPTION_KEY
   BACKUPFILE: ksfetest,test
   REPLICATION: 0
-  MASTER_ENABLE: "yes"
+  MASTER_ENABLE: "no"
   AUTH_ENABLE: 0
   
   MONGODB_HOST: 127.0.0.1
