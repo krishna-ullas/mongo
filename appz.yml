@@ -52,10 +52,17 @@ properties:
     vault: AUTH_KEY
   ENCRYPTION_KEY:
     vault: ENCRYPTION_KEY
-  BACKUPFILE: ksfetest,test
+  BACKUPFILE: ksfe
+  S3_BUCKET: backup-ksfe
+  AWS_ACCESS_KEY_ID: 
+    vault: AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: 
+    vault: AWS_SECRET_ACCESS_KEY
   REPLICATION: 2
   MASTER_ENABLE: "yes"
   AUTH_ENABLE: 1
+  AWS_DEFAULT_REGION: ap-south-1
+  
   
   MONGODB_HOST: 127.0.0.1
   MONGODB_PORT: 27017
